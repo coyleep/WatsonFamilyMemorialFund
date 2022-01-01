@@ -1,0 +1,82 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+         <link rel="stylesheet" href="/static/style.css">
+         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <title> {% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <nav>
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                  <a href="/">Homepage</a>
+                  <a href="/about">About</a>
+                  <a href="/Events">Events</a>
+                  <a href="#">Donate</a>
+                </div>
+              </div>
+        <div class="nav-Div">
+            <p class="Nav-Logo">Watson Family Memorial Fund</p>
+            
+            <div class="navigation">
+                <ol>
+                    <li><a href="/">Hompage</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/Events">Events</a></li>
+                    <li><a href="#">Donate</a></li>
+                </ol>
+            </div>
+            <span style="font-size:30px;cursor:pointer; padding-right:30px;" onclick="openNav()">&#9776;</span>
+            </div>
+        </nav>
+        {% block main %}{% endblock %}
+
+    <div class="margin-top-footer"></div>
+        <footer class="footer-distributed">
+			<div class="footer-left">
+				<h3>Watson Family Memorial Fund</h3>
+				<p class="footer-company-name">Bill Watson © 2021</p>
+			</div>
+			<div class="footer-right">
+				<form action="https://sheetdb.io/api/v1/u3jx3bm0bht9a" method="post" id='sheetdb-form'>
+                    <p>Stay Up to Date</p>
+                    <input type="text" name="data[Name]" placeholder="Name">
+					<input type="text" name="data[Email]" placeholder="Email">
+                    <button class="button-84" role="button">Send</button>				</form>
+                <div class="footer-links">
+                        <div class="footer-links-left">
+                            <a href="/">Homepage</a>
+                            <a href="/about">About</a>
+                        </div>
+                        <div class="footer-links-right">
+                            <a href="/Events">Events</a>
+                            <a href="#">Donate</a>
+                        </div>
+                    </div>
+                </div>
+
+		</footer>
+        <script>
+            function openNav() {
+              document.getElementById("myNav").style.width = "100%";
+            }
+            
+            function closeNav() {
+              document.getElementById("myNav").style.width = "0%";
+            }
+            var form = document.getElementById('sheetdb-form');
+            form.addEventListener("submit", e => {
+                e.preventDefault();
+                fetch(form.action, {
+                    method : "POST",
+                    body: new FormData(document.getElementById("sheetdb-form")),
+                }).then(
+                    response => response, json()
+                ).then((html) => {
+                    window.location.href = window.location.href;
+                })
+            })
+            </script>
+    </body>
+</html>
